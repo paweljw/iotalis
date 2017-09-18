@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    influxdb (0.4.1)
+    logutils (0.6.1)
+    mustermann (1.0.1)
+    rack (2.0.3)
+    webservice (0.7.0)
+      logutils
+      mustermann (>= 1.0.0)
+      rack (>= 2.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  influxdb
+  webservice
+
+BUNDLED WITH
+   1.15.4
