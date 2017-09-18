@@ -16,5 +16,6 @@ services:
     environment:
       GF_SECURITY_ADMIN_PASSWORD: secret
       GF_DEFAULT_INSTANCE_NAME: iotalis-grafana
+      GF_USERS_ALLOW_SIGNUP: "false"
     volumes:
       - './tmp/grafana:/var/lib/grafana'
