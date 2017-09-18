@@ -1,0 +1,3 @@
+database: 'iotalis'
+influxdb_url: 'http://localhost:8086/'
+access_token: 'foobar'

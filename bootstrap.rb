@@ -1,21 +1,12 @@
+IOTALIS_ROOT = File.expand_path(File.dirname(__FILE__))
+IOTALIS_ENV = ENV['IOTALIS_ENV'] || 'development'
+
 require 'rubygems'
 require 'bundler'
-Bundler.require(:default)
+Bundler.require(:default, IOTALIS_ENV)
 
-DATABASE = 'iotalis'.freeze
+Config.load_and_set_settings(
+  Config.setting_files(File.join(IOTALIS_ROOT, 'config'), IOTALIS_ENV)
+)
 
-influxdb = InfluxDB::Client.new
-influxdb.create_database(DATABASE)
-
-influxdb = InfluxDB::Client.new(DATABASE)
-
-Value = (0..360).to_a.map { |i| Math.send(:sin, i / 10.0) * 10 }.each
-
-loop do
-  data = {
-    values: { value: Value.next },
-    tags:   { wave: 'sine' } # tags are optional
-  }
-
-  influxdb.write_point('sine', data)
-end
+require_relative 'lib/influxdb'
