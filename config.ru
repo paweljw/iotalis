@@ -22,7 +22,7 @@ class Iotalis < Webservice::Base
   end
 
   def tagged(series)
-    return "#{series}-#{tag}" unless tag.size < 1
+    return "#{series}-#{tag}" unless tag.size > 1
     series
   end
 
